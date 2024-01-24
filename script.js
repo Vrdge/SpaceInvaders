@@ -14,7 +14,7 @@ let EnemyGrid = [
     [1]
 ]
 
-const EnemyControler = new EnemyControl(canvas, EnemyGrid)
+let EnemyControler = new EnemyControl(canvas, EnemyGrid)
 
 
 canvas.width = window.screen.width - 100
@@ -24,22 +24,23 @@ const height = canvas.height
 ctx.fillStyle = 'white'
 ctx.font = "30px Arial";
 
+
 const run = () => {
+    EnemyControler.endTheGame()
     ctx.drawImage(backgroundImage, 0, 0, width, height)
     EnemyControler.draw(ctx)
     drawPilot(ctx, shoot)
     drawBullet(ctx)
-}
 
+}
 const GameRestart = (ev) => {
     if (ev.x > 400 && ev.x < 470 && ev.y > 430 && ev.y < 460) {
-        props.GameOver = false
+        props.IsGameOver = false
+        EnemyControler = new EnemyControl(canvas, EnemyGrid)
     }
 }
-export const GameOver = ()=>{
-    if(props.GameOver === true){
-        ctx.fillText('Restart', width / 2 - 60,  height / 2 + 30)
-    }
+export const GameOver = () => {
+    ctx.fillText('Restart', width / 2 - 60, height / 2 + 30)
 }
 
 document.addEventListener('click', (ev) => {
@@ -48,7 +49,9 @@ document.addEventListener('click', (ev) => {
 
 
 setInterval(() => {
+    if (props.IsGameOver === false) {
         run()
+    } else if (props.IsGameOver === true) {
         GameOver()
-    
+    }
 }, 10);

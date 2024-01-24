@@ -8,7 +8,7 @@ const MovingState = {
 
 export default class EnemyControl {
     EnemyGrid = [
-        [1]
+        [1,2]
     ]
 
 
@@ -23,13 +23,25 @@ export default class EnemyControl {
     Score = 0;
 
     currentState = MovingState.down
+    
     StartingSpeed = 1
     constructor(canvas, BulletControler) {
         this.BulletControler = BulletControler
         this.canvas = canvas
         this.InitializeEnemies()
     }
-
+        
+    InitializeEnemies() {
+        this.GetRandomValue(0, this.canvas.width / 1.5)
+        this.EnemyGrid.forEach((row, RowIndex) => {
+            this.EnemyRows[RowIndex] = []
+            row.forEach((EnemyNumber, EnemyIndex) => {
+                if (EnemyNumber > 0) {
+                    this.EnemyRows[RowIndex].push(new Enemy(EnemyIndex * 66 + this.RandomX, RowIndex * 44 - 44 * this.EnemyGrid.length, EnemyNumber))
+                }
+            })
+        })
+    }
     bulletColliderect() {
 
         this.EnemyRows.forEach(EnemyRow => {
@@ -67,12 +79,11 @@ export default class EnemyControl {
         this.ChangeStats()
         this.bulletColliderect()
         this.drawEnemies(ctx);
-        this.endTheGame()
 
     }
     endTheGame (){
-        if(this.EnemyRows.length === 0 && props.GameOver === false ){
-            props.GameOver = !props.GameOver
+        if(this.EnemyRows.length === 0 && props.IsGameOver === false ){
+            props.IsGameOver = true
         }
     }
 
@@ -107,15 +118,5 @@ export default class EnemyControl {
         })
     }
 
-    InitializeEnemies() {
-        this.GetRandomValue(0, this.canvas.width / 1.5)
-        this.EnemyGrid.forEach((row, RowIndex) => {
-            this.EnemyRows[RowIndex] = []
-            row.forEach((EnemyNumber, EnemyIndex) => {
-                if (EnemyNumber > 0) {
-                    this.EnemyRows[RowIndex].push(new Enemy(EnemyIndex * 66 + this.RandomX, RowIndex * 44 - 44 * this.EnemyGrid.length, EnemyNumber))
-                }
-            })
-        })
-    }
+
 }
