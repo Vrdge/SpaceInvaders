@@ -1,8 +1,11 @@
+import { props } from "./props.js"
+
 let speed = 3
 let xPos = window.screen.width / 2 - 42.4
 let yPos = window.screen.height - 92.4 * 2
 
-let image = new Image().src = `images/SpaceShip.png`
+let image = new Image()
+image.src = `images/SpaceShip.png`
 let width = 94.8
 let height = 92.4
 
@@ -11,7 +14,7 @@ const canvas = document.getElementById("canvas")
 
 let moveLeft = false
 let moveRight = false
-let shoot = false
+let shootBool = false
 
 const keyDown = (ev) => {
     switch (ev.keyCode) {
@@ -22,10 +25,18 @@ const keyDown = (ev) => {
             moveRight = true
             break
         case 32:
-            shoot = true
+            shootBool = true
             break
+        case 71:
+            if (props.allowed) {
+                props.splashAttack = true
+                break
+            }
+
+
     }
 }
+
 const keyUp = (ev) => {
     switch (ev.keyCode) {
         case 37:
@@ -35,8 +46,9 @@ const keyUp = (ev) => {
             moveRight = false
             break
         case 32:
-            shoot = false
+            shootBool = false
             break
+
     }
 }
 
@@ -63,13 +75,12 @@ const move = () => {
     }
 }
 
-export const drawPilot = (ctx,bulletControler,/*shoot */) => {
-    if (shoot === true) {
-            // shoot(xPos + width / 2, yPos, 5, 5)
-            bulletControler.shoot(xPos + width / 2, yPos, 5, 5)
+export const drawPilot = (ctx, shoot) => {
+    if (shootBool || props.splashAttack) {
+        shoot(xPos + width / 2, yPos, 5, 5, props.splashAttack)
+        props.splashAttack = false
     }
     move()
     checkBorder()
     ctx.drawImage(image, xPos, yPos, width, height)
-
 }
