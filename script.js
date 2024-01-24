@@ -34,9 +34,10 @@ const run = () => {
 
 }
 const GameRestart = (ev) => {
-    if (ev.x > 400 && ev.x < 470 && ev.y > 430 && ev.y < 460) {
+    if (ev.x > 766 && ev.x < 919 && ev.y > 424 && ev.y < 480) {
         props.IsGameOver = false
         EnemyControler = new EnemyControl(canvas, EnemyGrid)
+        run()
     }
 }
 export const GameOver = () => {
@@ -44,6 +45,7 @@ export const GameOver = () => {
 }
 
 document.addEventListener('click', (ev) => {
+
     GameRestart(ev)
 })
 

@@ -8,7 +8,15 @@ const MovingState = {
 
 export default class EnemyControl {
     EnemyGrid = [
-        [1,2]
+        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+        [1,1,1,1,1,2,2,3,2,2,1,1,1,1,1],
+        [1,1,1,1,1,2,3,3,3,2,1,1,1,1,1],
+        [1,1,1,1,1,2,2,3,2,2,1,1,1,1,1],
+        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+
+
     ]
 
 
@@ -59,7 +67,7 @@ export default class EnemyControl {
                             this.Score += 10
                             break;
                         case 3:
-                            this.Score += 50
+                            this.Score += 90
                             break;
 
                         default:
