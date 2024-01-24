@@ -3,7 +3,7 @@ import { props } from "./props.js";
 
 const maxBullets = 5
 const canvas = document.getElementById("canvas")
-const colorBullet = 'red'
+const colorBullet = "blue"
 let timeOutUntilNextBulletOutSide = 0
 let bullets = []
 let timeUntilNextSplashDamage = 15

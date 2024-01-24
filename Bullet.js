@@ -36,7 +36,7 @@ export default class Bullet {
                 break
         }
 
-        ctx.fillStyle = "red";
+        ctx.fillStyle = this.colorBullet;
         ctx.fillRect(this.xPos, this.yPos, this.width, this.height);
     }
 }
