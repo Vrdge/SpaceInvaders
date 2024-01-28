@@ -1,3 +1,4 @@
+import { EnemyCollide } from "./EnemyBulletControl.js"
 import { props } from "./props.js"
 
 let speed = 3
@@ -56,7 +57,9 @@ document.addEventListener('keyup', keyUp)
 document.addEventListener('keydown', keyDown)
 
 
-
+const checkBulletColliderect = ()=>{
+    EnemyCollide(xPos,yPos,width,height)
+}
 
 const checkBorder = () => {
     if (xPos >= canvas.width - 100) {
@@ -81,6 +84,7 @@ export const drawPilot = (ctx, shoot) => {
         props.splashAttack = false
     }
     move()
+    checkBulletColliderect()
     checkBorder()
     ctx.drawImage(image, xPos, yPos, width, height)
 }

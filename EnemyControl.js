@@ -1,5 +1,6 @@
 import { collide } from "./BulletControl.js";
 import Enemy from "./Enemy.js"
+import { EnemyShoot } from "./EnemyShoot.js";
 import { props } from "./props.js";
 const MovingState = {
     down: 0,
@@ -21,8 +22,9 @@ export default class EnemyControl {
 
 
 
-    RandomX;
-    BottomMostEnemy
+
+    RandomX = 200;
+    BottomMostEnemy;
     EnemyRows = []
     xSpeed = 0
     YSpeed = 0
@@ -40,7 +42,7 @@ export default class EnemyControl {
     }
         
     InitializeEnemies() {
-        this.GetRandomValue(0, this.canvas.width / 1.5)
+        // this.GetRandomValue(0, this.canvas.width / 1.5)
         this.EnemyGrid.forEach((row, RowIndex) => {
             this.EnemyRows[RowIndex] = []
             row.forEach((EnemyNumber, EnemyIndex) => {
@@ -51,12 +53,9 @@ export default class EnemyControl {
         })
     }
     bulletColliderect() {
-
         this.EnemyRows.forEach(EnemyRow => {
 
             EnemyRow.forEach((Enemy, EnemyIndex) => {
-                // if (collide(Enemy)) {
-
                 if (collide(Enemy)) {
                     EnemyRow.splice(EnemyIndex, 1)
                     switch (Enemy.type) {
@@ -87,6 +86,7 @@ export default class EnemyControl {
         this.ChangeStats()
         this.bulletColliderect()
         this.drawEnemies(ctx);
+        EnemyShoot(this.EnemyRows) 
 
     }
     endTheGame (){
@@ -95,9 +95,9 @@ export default class EnemyControl {
         }
     }
 
-    GetRandomValue(min, max) {
-        this.RandomX = Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+    // GetRandomValue(min, max) {
+    //     this.RandomX = Math.floor(Math.random() * (max - min + 1)) + min;
+    // }
 
     ChangeStats() {
         if (this.currentState === MovingState.down) {
@@ -126,5 +126,5 @@ export default class EnemyControl {
         })
     }
 
-
+    
 }

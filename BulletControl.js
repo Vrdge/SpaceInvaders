@@ -3,7 +3,7 @@ import { props } from "./props.js";
 
 const maxBullets = 5
 const canvas = document.getElementById("canvas")
-const colorBullet = "blue"
+const colorBullet = "red"
 let timeOutUntilNextBulletOutSide = 0
 let bullets = []
 let timeUntilNextSplashDamage = 15
@@ -25,7 +25,6 @@ export const shoot = (xPos, yPos, speed, timeOutUntilNextBullet = 0, splashAttac
     const newBullet = (bulletNum, isPenetrating) => {
         const bullet = new Bullet(canvas, xPos, yPos, speed, colorBullet, bulletNum, isPenetrating)
         bullets.push(bullet)
-        bullets.push('')
     }
     if (timeOutUntilNextBulletOutSide <= 0 && bullets.length < maxBullets) {
         if (splashAttack === true && bullets.length < maxBullets/2) {
