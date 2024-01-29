@@ -12,7 +12,7 @@ let splashAttackLimit = 3
 const Ulta = () => {
     setInterval(() => {
         timeUntilNextSplashDamage -= 1
-        if (timeUntilNextSplashDamage === -1) {
+        if (props.IsGameOver || timeUntilNextSplashDamage <0) {
             clearInterval(Ulta)
             props.allowed = true
             timeUntilNextSplashDamage = 15

@@ -49,6 +49,7 @@ const GameRestart = (ev) => {
         props.allowed = false
         props.IsGameOver = false
         props.health = 100
+        
      }
 }
 export const GameOver = () => {

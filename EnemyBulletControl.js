@@ -20,7 +20,7 @@ export const EnemyShootBullet = (xPos, yPos, speed, timeOutUntilNextBullet = 0) 
 
 export const EnemyCollide = (xPos,yPos,width,height) => {
     const colidedBullet = bullets.findIndex(bullet => bullet.collide(xPos,yPos,width,height));
-    if (colidedBullet >= 0) {
+    if (colidedBullet >= 0 ) {
             bullets.splice(colidedBullet, 1)
             props.health -=10
         return true
@@ -28,7 +28,12 @@ export const EnemyCollide = (xPos,yPos,width,height) => {
     }
     return false
 }
-
+export const checkIfBulletIsOut = () =>{
+    const OutBullet = bullets.findIndex(bullet => bullet.yPos > props.height)
+    if(OutBullet >= 0){
+        bullets.splice(OutBullet, 1)
+    }
+}
 
 export const drawEnemyBullet = (ctx) => {
     bullets.forEach((bullet) => { bullet.draw(ctx); })

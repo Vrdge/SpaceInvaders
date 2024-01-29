@@ -75,7 +75,6 @@ export default class EnemyControl {
                         default:
                             break;
                     }
-                    console.log(this.EnemyRows);
 
                 }
 

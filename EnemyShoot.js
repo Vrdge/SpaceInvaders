@@ -1,4 +1,4 @@
-import { EnemyShootBullet } from "./EnemyBulletControl.js";
+import { EnemyShootBullet, checkIfBulletIsOut } from "./EnemyBulletControl.js";
 
 let x,y;
 export const EnemyShoot = (EnemyRows) => {
@@ -10,7 +10,8 @@ export const EnemyShoot = (EnemyRows) => {
     x = randomEnemy.x
     y = randomEnemy.y
 
-    EnemyShootBullet(x,y,2,75)
+    EnemyShootBullet(x,y,2,100)
+    checkIfBulletIsOut()
 }
 
 
