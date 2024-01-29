@@ -2,15 +2,17 @@ import { EnemyCollide } from "./EnemyBulletControl.js"
 import { props } from "./props.js"
 
 let speed = 3
-let xPos = window.screen.width / 2 - 42.4
-let yPos = window.screen.height - 92.4 * 2
 
 let image = new Image()
 image.src = `images/SpaceShip.png`
-let width = 94.8
-let height = 92.4
+let width = 65.25
+let height = 80
 
-const canvas = document.getElementById("canvas")
+let xPos = window.screen.width / 2 + width
+let yPos = window.screen.height - 1.5 * height 
+
+
+
 
 
 let moveLeft = false
@@ -62,10 +64,10 @@ const checkBulletColliderect = ()=>{
 }
 
 const checkBorder = () => {
-    if (xPos >= canvas.width - 100) {
-        xPos = canvas.width - 100
+    if (xPos >= props.width ) {
+        xPos = props.width 
 
-    } else if (xPos <= 0) {
+    } else if (xPos <=0) {
         xPos = 0
     }
 }

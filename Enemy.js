@@ -11,11 +11,14 @@ export default class Enemy {
         this.image.src = `images/sprite${ImageNum}.png`
 
     }
-    move(YSpeed) {
-        this.y = this.y + YSpeed
+    move(YSpeed,goDown) {
+        this.x = this.x + YSpeed
+        if(goDown){
+            this.y = this.y + 44
+        }
     }
     draw(ctx) {
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
     }
-
+    
 }

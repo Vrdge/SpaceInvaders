@@ -2,7 +2,7 @@ import { drawBullet, shoot } from "./BulletControl.js";
 import { drawPilot } from "./PilotControl.js";
 import EnemyControl from "./EnemyControl.js";
 import { props } from "./props.js";
-import { EnemyShootBullet, drawEnemyBullet } from "./EnemyBulletControl.js";
+import { drawEnemyBullet } from "./EnemyBulletControl.js";
 
 
 const canvas = document.getElementById("canvas")
@@ -11,15 +11,13 @@ const ctx = canvas.getContext("2d");
 
 const backgroundImage = new Image()
 backgroundImage.src = "images/Background.png";
-let EnemyGrid = [
-    [1]
-]
-
-let EnemyControler = new EnemyControl(canvas, EnemyGrid)
 
 
-canvas.width = window.screen.width - 100
-canvas.height = window.screen.height - 100
+let EnemyControler = new EnemyControl(canvas)
+
+
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
 const width = canvas.width
 const height = canvas.height
 ctx.fillStyle = 'white'
@@ -46,7 +44,7 @@ const checkHealtr = ()=>{
 
 const GameRestart = (ev) => {
     if (ev.x > 766 && ev.x < 919 && ev.y > 424 && ev.y < 480) {
-        EnemyControler = new EnemyControl(canvas, EnemyGrid)
+        EnemyControler = new EnemyControl(canvas)
         props.splashAttack =  false
         props.allowed = false
         props.IsGameOver = false
