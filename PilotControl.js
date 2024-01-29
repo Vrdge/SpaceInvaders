@@ -88,5 +88,5 @@ export const drawPilot = (ctx, shoot) => {
     move()
     checkBulletColliderect()
     checkBorder()
-    ctx.drawImage(image, xPos, yPos, width, height)
+    ctx.drawImage(image, xPos, 100, width, height)
 }
