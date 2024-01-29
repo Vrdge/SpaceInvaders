@@ -67,4 +67,4 @@ setInterval(() => {
     } else if (props.IsGameOver === true) {
         GameOver()
     }
-}, 10);
+}, 1);
