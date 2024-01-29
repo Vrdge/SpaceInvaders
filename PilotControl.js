@@ -9,7 +9,7 @@ let width = 65.25
 let height = 80
 
 let xPos = window.screen.width / 2 + width
-let yPos = window.screen.height - 200
+let yPos = window.screen.height - 3 * height 
 
 
 
@@ -88,5 +88,5 @@ export const drawPilot = (ctx, shoot) => {
     move()
     checkBulletColliderect()
     checkBorder()
-    ctx.drawImage(image, xPos, 100, width, height)
+    ctx.drawImage(image, xPos, yPos, width, height)
 }
