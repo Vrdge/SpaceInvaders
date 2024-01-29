@@ -9,7 +9,7 @@ let width = 65.25
 let height = 80
 
 let xPos = window.screen.width / 2 + width
-let yPos = window.screen.height - 3 * height 
+let yPos = window.screen.height - 200
 
 
 
