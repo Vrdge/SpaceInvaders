@@ -7,7 +7,7 @@ import { drawEnemyBullet } from "./EnemyBulletControl.js";
 
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d");
-
+const Btn =  document.getElementById('Restart')
 
 const backgroundImage = new Image()
 backgroundImage.src = "images/Background.png";
@@ -41,23 +41,28 @@ const checkHealtr = ()=>{
         props.IsGameOver = true
     }
 }
-
 const GameRestart = (ev) => {
-    if (ev.x > 766 && ev.x < 919 && ev.y > 424 && ev.y < 480) {
+    // if (ev.x > props.width / 2 - 100 && ev.x < props.width / 2 + 100 && ev.y > props.height / 2 -100 && ev.y < props.height / 2 + 100) {
+
+        
+    //  }
+     Btn.addEventListener('click', ()=>{
+        Btn.style.display = 'none'
         EnemyControler = new EnemyControl(canvas)
         props.splashAttack =  false
         props.allowed = false
         props.IsGameOver = false
         props.health = 100
-        
-     }
+     })
 }
 export const GameOver = () => {
-    ctx.fillText('Restart', width / 2 - 60, height / 2 + 30)
+    Btn.style.display= 'block'
 }
 
 document.addEventListener('click', (ev) => {
-    GameRestart(ev)
+    if(props.IsGameOver){
+        GameRestart(ev)
+    }
 })
 
 

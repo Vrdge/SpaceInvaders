@@ -29,7 +29,7 @@ export const EnemyCollide = (xPos,yPos,width,height) => {
     return false
 }
 export const checkIfBulletIsOut = () =>{
-    const OutBullet = bullets.findIndex(bullet => bullet.yPos > props.height)
+    const OutBullet = bullets.findIndex(bullet => bullet.yPos > props.height - 100)
     if(OutBullet >= 0){
         bullets.splice(OutBullet, 1)
     }

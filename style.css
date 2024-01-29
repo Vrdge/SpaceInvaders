@@ -14,3 +14,9 @@ body{
     height: 100%;
     box-shadow: black 10px 20px 30px;
 }
+#Restart{
+    position: absolute;
+    color: white;
+    display: none;
+    font-size: 48px;
+}

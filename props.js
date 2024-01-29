@@ -5,7 +5,7 @@ export const props = {
     splashAttack: false,
     allowed:false,
     IsGameOver:false,
-    health:100,
+    health:10,
     isDoneMoving:false,
     width:window.innerWidth,
     height:window.innerHeight
