@@ -1,7 +1,7 @@
 import Bullet from "./Bullet.js";
 import { props } from "./props.js";
 
-const maxBullets = 5
+const maxBullets = 3
 const canvas = document.getElementById("canvas")
 const colorBullet = "red"
 let timeOutUntilNextBulletOutSide = 0
